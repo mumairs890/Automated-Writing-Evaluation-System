@@ -1,0 +1,70 @@
+FRAMEWORK/CRITERIA:
+[FRAMEWORK]
+<ErrorTypes>
+  <MainType name="Auxiliary verb" description="If an error involves the incorrect use, inappropriate application, or omission of an auxiliary verb, which is essential for constructing the verb phrase to express grammatical distinctions in mood, aspect, voice, and emphasis, assign this tag; otherwise, leave it untagged.">
+    <SubType name="Do: auxiliary of periphrasis and emphasis" description="If the error arises from misuse of the auxiliary 'do' (do, does, did) to form questions, negatives, or emphatic statements, particularly in simple present and past tenses (e.g., 'Do you understand?,' 'I do not like it,' 'He did finish on time'), where 'do' is used to add emphasis or form a question or negation but is either omitted where required, used with the wrong form of the main verb, or unnecessarily included in an affirmative statement, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "He do go to school every day."</Example>
+      <Example>Correct: "He does go to school every day."</Example>
+      <Example>Incorrect: "Does she has a pen?"</Example>
+      <Example>Correct: "Does she have a pen?"</Example>
+    </SubType>
+    <SubType name="Passive auxiliary" description="If an error involves the auxiliary 'be' (am, is, are, was, were) used in passive constructions to indicate the subject is the recipient rather than the doer of an action (e.g., 'The letter was written'), and there is an incorrect form or omission of 'be,' or the main verb is in the wrong form (i.e., not past participle), assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "The book was write by her."</Example>
+      <Example>Correct: "The book was written by her."</Example>
+      <Example>Incorrect: "A movie is watch by them every night."</Example>
+      <Example>Correct: "A movie is watched by them every night."</Example>
+    </SubType>
+    <SubType name="Progressive auxiliary" description="If the error pertains to the use of the auxiliary 'be' (am, is, are, was, were) to form progressive aspects, indicating ongoing actions or states (e.g., 'is running,' 'are playing'), and 'be' is either incorrectly conjugated for the subject, omitted entirely, or paired with an incorrect main verb form, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "She are going to the market."</Example>
+      <Example>Correct: "She is going to the market."</Example>
+      <Example>Incorrect: "They is playing football."</Example>
+      <Example>Correct: "They are playing football."</Example>
+    </SubType>
+    <SubType name="Perfective auxiliary" description="If the error involves the use of the auxiliary 'have' (have, has, had) in perfect tenses to denote completed actions or states up to the present or a specified time (e.g., 'has gone,' 'have seen'), and 'have' is conjugated incorrectly, omitted, or paired with an incorrect main verb form, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "He have finished his homework."</Example>
+      <Example>Correct: "He has finished his homework."</Example>
+      <Example>Incorrect: "They has been to the new cafe."</Example>
+      <Example>Correct: "They have been to the new cafe."</Example>
+    </SubType>
+    <SubType name="Modal auxiliary" description="If there is an error in using modal auxiliaries (can, could, may, might, must, shall, should, will, would) which modulate the mood expressing abilities, possibilities, necessities, or obligations (e.g., 'can swim,' 'should go'), and the modal is either omitted where needed, used unnecessarily, or conjugated incorrectly, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "She can to drive."</Example>
+      <Example>Correct: "She can drive."</Example>
+      <Example>Incorrect: "He should not goes to school."</Example>
+      <Example>Correct: "He should not go to school."</Example>
+    </SubType>
+    <SubType name="Semi-auxiliary" description="If the error is related to semi-auxiliaries (have to, need to, used to, supposed to, ought to) that form compound verbal expressions indicating obligation or habitual past actions, and the error involves incorrect use or formation of these expressions, such as wrong verb form following the semi-auxiliary or misuse of the semi-auxiliary itself, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "She used to going to the gym."</Example>
+      <Example>Correct: "She used to go to the gym."</Example>
+      <Example>Incorrect: "He have to eats early."</Example>
+      <Example>Correct: "He has to eat early."</Example>
+    </SubType>
+    <SubType name="Semi-auxiliary followed by -ing participle" description="If an error involves semi-auxiliaries (going to, supposed to, used to, have to) that are followed by an -ing participle in expressions denoting ongoing actions or states resulting from habitual actions (e.g., 'look forward to going,' 'be used to seeing'), and the semi-auxiliary or participle is misused or incorrectly formed, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "I look forward to see you."</Example>
+      <Example>Correct: "I look forward to seeing you."</Example>
+      <Example>Incorrect: "They are get used to live here."</Example>
+      <Example>Correct: "They are getting used to living here."</Example>
+    </SubType>
+  </MainType>
+</ErrorTypes>
+
+
+
+Prompt:
+    As an expert in English and Computer Science, interpret the provided XML framework or criteria and analyze the structured user input given as JSON. The JSON will contain a key-value pair with "line_number" as a line number, and "sentence" as the corresponding English input text. The text within the JSON is interconnected.
+    Using the classification tags from the provided framework, apply all relevant tags to the JSON. You must accurately tag the sentences, identifying and assigning appropriate SubTypes for the MainType. Additionally, for every tag you apply, provide a detailed justification, explaining why each specific tag was chosen.
+
+    Required actions :
+    Tagging: "Using the provided criteria file or framework, begin by understanding the MainType outlined. Then, review the description of MainType and its associated SubTypes. Based on these descriptions, assign the appropriate MainType and SubType to each sentence. Some sentences may require multiple SubType tags, so ensure that all relevant tags are applied accurately. Stick strictly to the given FRAMEWORK and focus exclusively on identifying and tagging major errors. Do not offer any suggestions or corrections, just focus solely on tagging major errors."
+
+    Rules for analysis: 
+    "If a sentence does not fit any of the MainType and SubType, or if it contains errors that are not addressed by the established criteria—such as minor errors that do not significantly disrupt the overall meaning or the minor errors that only effect the clarity or conciseness of the sentence then you must write only "NONE" for both MainType and SubType. The aim is to ensure that only relevant major errors are identified and tagged for analysis."
+
+    Justification: "Provide a detailed justification for each tag, explaining why a specific SubType has been applied. Clarify the reasons for tagging each sentence according to the provided criteria, ensuring that the rationale for selecting the particular SubType must be clear and logical. Justification must be according to the provided SubTypeTag and provide correction of SubTypeTag error as well in justification. Also output Correction of errors as 'Correction:'. If their is "NONE" in both MainType and SubType then you must write only "NONE" in Justification."
+
+    Required output :
+    The output must be structure as following CSV. Each opening CSV tag should close with proper closing tag.
+
+csv
+	LineNumber,InputText,MainTypeTag,SubTypeTags,Justification
+	1,"Some text.","Type","Tags","Justification"
+csv

@@ -1,0 +1,62 @@
+FRAMEWORK/CRITERIA:
+[FRAMEWORK]
+<ErrorTypes>
+  <MainType name="PARTICLE" description="If an error involves incorrect use of particles in a sentence, assign this tag; otherwise, leave it untagged. 
+First of all check the errored word is a PARTICLE or NOT using given conditions. If the errored word is PARTICLE and is used incorrectly then assign this tag; otherwise, leave it untagged. 'Never tag verb, verb phrase or preposition related error in this subtype'
+Conditions:
+1. If a word combines with a verb to form a phrasal verb, it is a PARTICLE.
+Example: "He gave up smoking." (up is a particle when combined with give to form the phrasal verb give up).
+2. If the word does not have a noun or pronoun after it, it is a PARTICLE.
+Example: "She woke up early." (up is a particle because it doesn't have a noun or pronoun following it).
+3. If the word changes or adds meaning to the verb it is paired with, it is a PARTICLE.
+Example: "They ran into an old friend." (into is a particle that changes the meaning of ran).
+4. If the word is part of a fixed expression or idiomatic phrase, it is a PARTICLE.
+Example: "She gave in to the pressure." (in is a particle in the idiomatic expression give in).
+5. If the word cannot be replaced by a preposition without changing the meaning, it is a PARTICLE.
+Example: "He picked up the book." (up is a particle because replacing it with a preposition like on changes the meaning).
+">
+    
+    <SubType name="Particle for" description="If an error involves the use of the particle 'for' incorrectly, especially when it should indicate purpose, reason, or duration, assign this tag; otherwise, leave it untagged. 'Never tag verb or verb phrase or preposition related error in this subtype'. The particle 'for' can be used to show purpose (e.g., 'I bought a gift for you'), reason (e.g., 'I apologize for being late'), or duration (e.g., 'I stayed for two hours'). If the particle 'for', which functions as part of a verb phrase, is misused then it should be tagged. A particle "for" functions as part of a verb phrase, often in phrasal verbs or fixed expressions. It does not have an independent meaning but contributes to the overall meaning of the phrase.">
+      <Example>Incorrect: "I am studying for pass the exam."</Example>
+      <Example>Correct: "I am studying for passing the exam."</Example>
+      <Example>Incorrect: "He is responsible for to fix the issue."</Example>
+      <Example>Correct: "He is responsible for fixing the issue."</Example>
+    </SubType>
+    
+    <SubType name="Particle to" description="If an error involves the incorrect use of the particle 'to,' especially when it is used to mark direction, purpose, or the infinitive form of verbs (e.g., 'I am going to the store,' 'I want to eat'), assign this tag; otherwise, leave it untagged. The particle 'to' must not be used when there is no direction or infinitive form required. 'Never tag verb, verb phrase or preposition related error in this subtype'. The particle "to" is part of a phrasal verb (verb + particle), where "to" changes the meaning of the verb. In this case, "to" doesn’t show direction or relationship.">
+      <Example>Incorrect: "She is going the market."</Example>
+      <Example>Correct: "She is going to the market."</Example>
+      <Example>Incorrect: "I have plans to go there tomorrow."</Example>
+      <Example>Correct: "I have plans to go there tomorrow."</Example>
+    </SubType>
+
+    <SubType name="Particle with" description="If an error involves the use of the particle 'with' in a context where it should indicate accompaniment, instrument, or manner (e.g., 'I will go with her,' 'She painted the wall with a brush'), assign this tag; otherwise, leave it untagged. The particle 'with' can also be misused if it does not relate to accompaniment or instrumentality. Common errors include incorrect placement of 'with' in a sentence, leading to confusion or unnatural phrasing. Never tag verb usage error in this subtype. A particle "with" is part of a phrasal verb and is used to modify the meaning of the main verb in combination with it. The particle does not have an independent meaning and typically works as part of the overall meaning of the phrasal verb.">
+      <Example>Incorrect: "She is talking with him about the project."</Example>
+      <Example>Correct: "She is talking to him about the project."</Example>
+      <Example>Incorrect: "I worked with the computer to fix the issue."</Example>
+      <Example>Correct: "I worked on the computer to fix the issue."</Example>
+    </SubType>
+  </MainType>
+</ErrorTypes>
+
+
+
+Prompt:
+    As an expert in English and Computer Science, interpret the provided XML FRAMEWORK or criteria and analyze the structured user input given as JSON. The JSON will contain a key-value pair with "line_number" as a line number, and "sentence" as the corresponding English input text. The text within the JSON is interconnected.
+    Using the classification tags from the provided FRAMEWORK, apply all relevant tags to the JSON. You must accurately tag the sentences, identifying and assigning appropriate SubTypes for the MainType. Additionally, for every tag you apply, provide a detailed justification, explaining why each specific tag was chosen.
+
+    Required actions :
+    Tagging: "Using the provided criteria file or FRAMEWORK, begin by understanding the MainType outlined. Then, review the description of MainType and its associated SubTypes. Based on these descriptions, assign the appropriate MainType and SubType to each sentence. Some sentences may require multiple SubType tags, so ensure that all relevant tags are applied accurately. Stick strictly to the given FRAMEWORK and focus exclusively on identifying and tagging major errors. Do not offer any suggestions or corrections, just focus solely on tagging major errors."
+
+    Rules for analysis: 
+    "If a sentence does not fit any of the MainType and SubType, or if it contains errors that are not addressed by the established criteria—such as minor errors that do not significantly disrupt the overall meaning or the minor errors that only effect the clarity or conciseness of the sentence then you must write only "NONE" for both MainType and SubType. The aim is to ensure that only relevant major errors are identified and tagged for analysis."
+
+    Justification: "Provide a detailed justification for each tag, explaining why a specific SubType has been applied. Clarify the reasons for tagging each sentence according to the provided criteria, ensuring that the rationale for selecting the particular SubType must be clear and logical. Justification must be according to the provided SubTypeTag and provide correction of SubTypeTag error as well in justification. Also output Correction of errors as 'Correction:'. If their is "NONE" in both MainType and SubType then you must write only "NONE" in Justification."
+
+    Required output :
+    The output must be structure as following CSV. Each opening CSV tag should close with proper closing tag.
+
+csv
+	LineNumber,InputText,MainTypeTag,SubTypeTags,Justification
+	1,"Some text.","Type","Tags","Justification"
+csv
