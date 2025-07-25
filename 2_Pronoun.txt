@@ -1,0 +1,195 @@
+FRAMEWORK/CRITERIA:
+[FRAMEWORK]
+<ErrorTypes>
+  <MainType name="PRONOUN" description="If an error is related to the incorrect or inappropriate use of a pronoun in any context, assign this tag; otherwise, leave the sentence untagged. This main type encompasses all pronoun errors. If the sentence uses a pronoun correctly, do not assign any tag.
+First of all check the errored word is a PRONOUN or NOT using given conditions. If the errored word is PRONOUN and is used incorrectly then assign this tag; otherwise, leave it untagged. 
+Conditions:
+1. If a word belongs to I, you, he, she, it, we, they, me, him, her, us, them and substitutes for a specific noun (or noun phrase) in a sentence, then it is a pronoun
+
+2. If a word ends in -self or -selves (e.g., myself, yourself, himself, herself, itself, ourselves, themselves) and it refers back to the subject of the clause, then it is a pronoun
+
+3. If a word stands alone to indicate possession—such as mine, yours, his, hers, its, ours, theirs and directly replaces a noun phrase (e.g., “That book is mine”), then it is a pronoun. (Note: Words like my, your, his, her, its, our, their are often “possessive adjectives” or “determiners” if they modify a noun rather than replace one. For instance, “my book” uses my as a determiner, not a pronoun.)
+
+4. If a word is this, that, these, or those and stands alone to replace a noun (e.g., “This is interesting” rather than “This idea”), then it is a pronoun
+
+5. If a word (e.g., someone, somebody, anyone, anybody, everyone, everybody, no one, nobody, nothing, something, one, none) appears by itself in place of a noun or noun phrase (“Everyone is invited,” “Something happened”), then it is a pronoun
+
+6. If a word (e.g., who, whom, whose, what, which) is used in a question to represent an unknown noun or noun phrase (e.g., “Who is knocking?” “What happened?”), then it is a pronoun
+
+7. If a word (e.g., who, whom, whose, which, that) is used to introduce a relative (adjective) clause and refers back to an antecedent (“The person who called you left a message”), then it is a pronoun
+
+Key Reminder
+Some words (e.g., that, which, those, what) can also function as determiners, adjectives, or other parts of speech. They are only pronouns if they stand alone and directly take the place of a noun or noun phrase.
+">
+
+    <SubType name="Anticipatory it"
+         description="If there is a misuse of 'it' functioning as a placeholder (expletive) subject before the true subject (often an infinitive or clause) appears later in the sentence, assign this tag; otherwise, leave the sentence untagged. Anticipatory 'it' is typically used to introduce or delay the real subject for stylistic or structural reasons (e.g., 'It is important that you attend.'). 
+
+Common mistakes include:
+• Omitting 'it' when the sentence structure requires it (e.g., 'Is important that you attend.').
+• Placing 'it' in the wrong position in the sentence, causing grammatical or clarity issues.
+
+If 'it' is used correctly as a placeholder, or if the sentence does not require an anticipatory structure and therefore does not need 'it,' do not assign this tag.">
+  <Example>Incorrect: "Is essential to arrive on time."</Example>
+  <Example>Correct: "It is essential to arrive on time."</Example>
+  <Example>Incorrect: "Was surprising that she left early."</Example>
+  <Example>Correct: "It was surprising that she left early."</Example>
+</SubType>
+
+    <SubType name="Assertive pronoun" 
+             description="If an error involves the misuse of pronouns typically used in affirmative contexts (e.g., some, someone, somebody, something, somewhere) in a situation requiring a correct affirmative reference, assign this tag; otherwise, leave the sentence untagged. Assertive pronouns denote a positive stance, contrasting with non-assertive or negative pronouns. If they are used correctly, do not assign this tag.">
+      <Example>Incorrect: "I want any information about the course."</Example>
+      <Example>Correct: "I want some information about the course."</Example>
+      <Example>Incorrect: "Somebody didn't come to the meeting, do you know who?" (intended negative)</Example>
+      <Example>Correct: "Nobody came to the meeting, do you know why?"</Example>
+    </SubType>
+
+    <SubType name="Cleft it" 
+             description="If an error involves the misuse of 'it' in a cleft sentence designed to emphasize a particular element (e.g., 'It was John who called me'), assign this tag; otherwise, leave the sentence untagged. Cleft sentences restructure a clause to highlight a specific piece of information. If 'it' is used correctly for emphasis or it is not used and is not necessary to be used, do not assign this tag.">
+      <Example>Incorrect: "John called me was who it."</Example>
+      <Example>Correct: "It was John who called me."</Example>
+      <Example>Incorrect: "We found out it was the cat ate the fish."</Example>
+      <Example>Correct: "It was the cat that ate the fish."</Example>
+    </SubType>
+
+    <SubType name="Demonstrative pronoun" 
+             description="If an error involves incorrect usage of demonstrative pronouns (this, that, these, those) as stand-alone pronouns referring to something previously mentioned, assign this tag; otherwise, leave the sentence untagged. Demonstrative pronouns must have a clear antecedent and agree in number. If they are used correctly, do not assign this tag.">
+      <Example>Incorrect: "Those is my favorite kind of music."</Example>
+      <Example>Correct: "That is my favorite kind of music."</Example>
+      <Example>Incorrect: "This are the best apples I’ve tasted."</Example>
+      <Example>Correct: "These are the best apples I’ve tasted."</Example>
+    </SubType>
+
+    <SubType name="Exclamatory pronoun what" 
+             description="If an error involves the misuse of the exclamatory pronoun 'what' in exclamatory structures (e.g., 'What a day!'), assign this tag; otherwise, leave the sentence untagged.Exclamatory 'what' expresses strong emotion or surprise, often followed by a noun phrase. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "What a pity is this!"</Example>
+      <Example>Correct: "What a pity this is!"</Example>
+      <Example>Incorrect: "What nonsense are they talking?"</Example>
+      <Example>Correct: "What nonsense they are talking!"</Example>
+    </SubType>
+    <SubType name="Interrogative pronoun" 
+             description="If an error involves an incorrect usage of interrogative pronouns (who, whom, whose, which, what) in forming direct or indirect questions, assign this tag; otherwise, leave the sentence untagged. They must match the required case or function (subject, object, possession). If used correctly, do not assign this tag.">
+      <Example>Incorrect: "Who did you give the book to?" (formal usage expects 'whom')</Example>
+      <Example>Correct: "To whom did you give the book?"</Example>
+      <Example>Incorrect: "What is the person you spoke to?" (intended meaning: 'Which person?')</Example>
+      <Example>Correct: "Which person did you speak to?"</Example>
+    </SubType>
+
+    <SubType name="Negative pronoun" 
+             description="If an error involves the misuse of negative pronouns (no one, nobody, nothing, neither, none) or introduces a double negative incorrectly, assign this tag; otherwise, leave the sentence untagged. Negative pronouns express negation or absence. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "I don't have nothing to say."</Example>
+      <Example>Correct: "I don't have anything to say."</Example>
+      <Example>Incorrect: "Nobody didn't come to the party."</Example>
+      <Example>Correct: "Nobody came to the party."</Example>
+    </SubType>
+
+    <SubType name="Nominal possessive pronoun" 
+             description="If an error involves the misuse of nominal (stand-alone) possessive pronouns (mine, yours, his, hers, ours, theirs, whose), assign this tag; otherwise, leave the sentence untagged. These pronouns replace the noun to show possession (e.g., 'That book is mine.'). If used correctly, do not assign this tag.">
+      <Example>Incorrect: "That book is my."</Example>
+      <Example>Correct: "That book is mine."</Example>
+      <Example>Incorrect: "The responsibility is your."</Example>
+      <Example>Correct: "The responsibility is yours."</Example>
+    </SubType>
+
+    <SubType name="Non-assertive pronoun" 
+             description="If an error involves the misuse of non-assertive pronouns (any, anybody, anyone, anything, anywhere) especially in negative or interrogative contexts, assign this tag; otherwise, leave the sentence untagged. Non-assertive pronouns typically appear in questions, negatives, or conditionals. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "I don't have some money."</Example>
+      <Example>Correct: "I don't have any money."</Example>
+      <Example>Incorrect: "Do you want something to drink?" (context might imply uncertain/negative)</Example>
+      <Example>Correct: "Do you want anything to drink?"</Example>
+    </SubType>
+
+    <SubType name="Pronoun one" 
+             description="If an error involves the misuse of the pronoun 'one' as an indefinite or generic reference (e.g., 'One must be careful'), assign this tag; otherwise, leave the sentence untagged. 'One' should be used consistently and not mixed with other pronouns. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "When one travels abroad, you should carry your passport at all times."</Example>
+      <Example>Correct: "When one travels abroad, one should carry one's passport at all times."</Example>
+      <Example>Incorrect: "One should always respect their elders."</Example>
+      <Example>Correct: "One should always respect one's elders."</Example>
+    </SubType>
+
+    <SubType name="Personal pronoun" 
+             description="If an error involves the misuse of personal pronouns (I, you, he, she, it, we, they, me, him, her, us, them) in subject or object positions or incorrect agreement, assign this tag; otherwise, leave the sentence untagged. Personal pronouns must match case, number, and person. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "Me went to the store."</Example>
+      <Example>Correct: "I went to the store."</Example>
+      <Example>Incorrect: "My sister and me are cooking dinner."</Example>
+      <Example>Correct: "My sister and I are cooking dinner."</Example>
+    </SubType>
+
+    <SubType name="Possessive pronoun" 
+             description="If an error involves the misuse of possessive determiners (my, your, his, her, its, our, their) before a noun, assign this tag; otherwise, leave the sentence untagged. These pronouns must agree with the possessor and possessed. (Note: This subtype focuses on possessive forms functioning as adjectives, not as standalone nouns.) If used correctly, do not assign this tag.">
+      <Example>Incorrect: "Me book is on the table."</Example>
+      <Example>Correct: "My book is on the table."</Example>
+      <Example>Incorrect: "They forgot their's phone in the car."</Example>
+      <Example>Correct: "They forgot their phone in the car."</Example>
+    </SubType>
+
+    <SubType name="Quantifying pronoun" 
+             description="If an error involves pronouns indicating quantity (all, both, each, every, few, many, several, none, some (quantity), enough) and their incorrect usage or agreement, assign this tag; otherwise, leave the sentence untagged. These pronouns must match countability or number correctly. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "Each are responsible for their actions."</Example>
+      <Example>Correct: "Each is responsible for their actions."</Example>
+      <Example>Incorrect: "There was many people in the auditorium."</Example>
+      <Example>Correct: "There were many people in the auditorium."</Example>
+    </SubType>
+
+    <SubType name="Reciprocal pronoun" 
+             description="If an error involves the misuse of 'each other' or 'one another' indicating mutual action or relationship, assign this tag; otherwise, leave the sentence untagged. Typically used to show that two or more entities act in return. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "They gave gifts to themselves."</Example>
+      <Example>Correct: "They gave gifts to each other."</Example>
+      <Example>Incorrect: "The two friends don't talk to one self anymore."</Example>
+      <Example>Correct: "The two friends don't talk to one another anymore."</Example>
+    </SubType>
+
+    <SubType name="Relative pronoun" 
+             description="If an error involves incorrect usage of relative pronouns (who, whom, whose, which, that) in a relative clause, assign this tag; otherwise, leave the sentence untagged. They must agree with the antecedent and use correct case/structure. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "The man which came to dinner was late."</Example>
+      <Example>Correct: "The man who came to dinner was late."</Example>
+      <Example>Incorrect: "That's the car who belongs to my friend."</Example>
+      <Example>Correct: "That's the car that belongs to my friend."</Example>
+    </SubType>
+
+    <SubType name="-self pronoun" 
+             description="If an error involves the misuse of reflexive or intensive pronouns (myself, yourself, himself, herself, itself, ourselves, yourselves, themselves), assign this tag; otherwise, leave the sentence untagged. These are used to reflect the action back to the subject (reflexive) or for emphasis (intensive). If used correctly, do not assign this tag.">
+      <Example>Incorrect: "Please send the report to myself."</Example>
+      <Example>Correct: "Please send the report to me."</Example>
+      <Example>Incorrect: "I did it me myself."</Example>
+      <Example>Correct: "I did it myself."</Example>
+    </SubType>
+
+    <SubType name="Pronoun such" 
+             description="If an error involves the misuse of 'such' as a pronoun referring to something previously mentioned or expressing 'of the kind mentioned,' assign this tag; otherwise, leave the sentence untagged. 'Such' can replace a noun or refer to a category (e.g., 'Such were his demands.'). If used correctly, do not assign this tag.">
+      <Example>Incorrect: "He demanded high wages, but no one agreed to such wages."</Example>
+      <Example>Correct: "He demanded high wages, but no one agreed to such."</Example>
+      <Example>Incorrect: "They wanted a major change, though they never expected such change was possible."</Example>
+      <Example>Correct: "They wanted a major change, though they never expected such was possible."</Example>
+    </SubType>
+
+    <SubType name="Universal pronoun" 
+             description="If an error involves the misuse of universal pronouns (everyone, everybody, everything, each, all) representing total inclusion, assign this tag; otherwise, leave the sentence untagged. These pronouns must correctly convey the entire group or category. If used correctly, do not assign this tag.">
+      <Example>Incorrect: "Everyone were present at the meeting."</Example>
+      <Example>Correct: "Everyone was present at the meeting."</Example>
+      <Example>Incorrect: "Everything are ready for the party."</Example>
+      <Example>Correct: "Everything is ready for the party."</Example>
+    </SubType>
+  </MainType>
+</ErrorTypes>
+
+
+Prompt:
+    As an expert in English and Computer Science, interpret the provided XML FRAMEWORK or criteria and analyze the structured user input given as JSON. The JSON will contain a key-value pair with "line_number" as a line number, and "sentence" as the corresponding English input text. The text within the JSON is interconnected.
+    Using the classification tags from the provided FRAMEWORK, apply all relevant tags to the JSON. You must accurately tag the sentences, identifying and assigning appropriate SubTypes for the MainType. Additionally, for every tag you apply, provide a detailed justification, explaining why each specific tag was chosen.
+
+    Required actions :
+    Tagging: "Using the provided criteria file or FRAMEWORK, begin by understanding the MainType outlined. Then, review the description of MainType and its associated SubTypes. Based on these descriptions, assign the appropriate MainType and SubType to each sentence. Some sentences may require multiple SubType tags, so ensure that all relevant tags are applied accurately. Stick strictly to the given FRAMEWORK and focus exclusively on identifying and tagging major errors. Do not offer any suggestions or corrections, just focus solely on tagging major errors."
+
+    Rules for analysis: 
+    "If a sentence does not fit any of the MainType and SubType, or if it contains errors that are not addressed by the established criteria—such as minor errors that do not significantly disrupt the overall meaning or the minor errors that only effect the clarity or conciseness of the sentence then you must write only "NONE" for both MainType and SubType. The aim is to ensure that only relevant major errors are identified and tagged for analysis. Before tagging, understand the context of previous sentences."
+
+    Justification: "Provide a detailed justification for each tag, explaining why a specific SubType has been applied. Clarify the reasons for tagging each sentence according to the provided criteria, ensuring that the rationale for selecting the particular SubType must be clear and logical. Justification must be according to the provided SubTypeTag and provide correction of SubTypeTag error as well in justification. Also output Correction of errors as 'Correction:'. If their is "NONE" in both MainType and SubType then you must write only "NONE" in Justification."
+
+    Required output :
+    The output must be structure as following CSV. Each opening CSV tag should close with proper closing tag.
+
+csv
+	LineNumber,InputText,MainTypeTag,SubTypeTags,Justification
+	1,"Some text.","Type","Tags","Justification"
+csv

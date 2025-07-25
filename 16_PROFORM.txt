@@ -1,0 +1,59 @@
+FRAMEWORK/CRITERIA:
+[FRAMEWORK]
+<ErrorTypes>
+  <MainType name="PROFORM" description="If an error occurs involving a word or phrase that stands in place of a noun or noun phrase, pronoun, verb, or verb phrase, conjunction, or even an entire clause, assign this tag; otherwise, leave it untagged. A proform is a word or phrase that substitutes for another element in a sentence to avoid repetition and maintain coherence. It refers back to a previously mentioned or understood context, allowing for more concise and connected discourse.
+First of all check the errored word is a PROFORM or NOT using given conditions. If the errored word is PROFORM and is used incorrectly then assign this tag; otherwise, leave it untagged. 
+Conditions:
+1. If a word replaces a noun or noun phrase to prevent repetition within a text, then it functions as a PROFORM (e.g., "he," "she," "it").
+
+2. If a word takes the place of an entire verb phrase to respond to previous statements or maintain conversation flow, then it serves as a PROFORM (e.g., "do" in responses like "Yes, I did").
+
+3. If a word or phrase is used in place of an adverbial phrase to indicate time, place, or manner, then it is a PROFORM (e.g., "then," "there").
+
+4. If a word is used instead of an adjective or an adjective phrase, particularly in comparisons to avoid redundancy, then it is a PROFORM (e.g., "such" as in "I’ve never seen such a thing").
+
+5. If a word substitutes for an entire clause or sentence, especially to affirm or reflect agreement with what was previously expressed, then it operates as a pro-sentence (e.g., "so" in "I think it will rain." "I think so too.").">
+
+    <SubType name="Pro-conjoin" description="If an error occurs involving the use of a PROFORM to conjoin two clauses, sentences, or phrases, and it is incorrect or misused, assign this tag; otherwise, leave it untagged. The Pro-conjoin typically refers to the use of 'and', 'but', or 'or' to link two units. Errors should be tagged only if the proform is incorrectly applied to join incompatible elements, such as joining a clause with a noun phrase, or creating ambiguity. Avoid tagging as an error if the elements are coordinated correctly or the usage does not cause syntactic confusion. Do not tag errors related to conjunctions.">
+      <Example>Incorrect: "She went to the market, and she bought some milk and bread." (should be "She went to the market and bought some milk and bread.")</Example>
+      <Example>Correct: "She went to the market and bought some milk and bread."</Example>
+      <Example>Incorrect: "I wanted to go, but I had too much work, so I stayed home." (incorrect use of 'but' to join conflicting ideas)</Example>
+      <Example>Correct: "I wanted to go but had too much work, so I stayed home."</Example>
+    </SubType>
+
+    <SubType name="Proform one" description="If an error occurs involving the misuse of the proform 'one' (e.g., substituting it incorrectly for a noun or noun phrase), assign this tag; otherwise, leave it untagged. The proform 'one' should only replace a singular, countable noun or noun phrase. Misuse arises when 'one' is substituted for a plural noun, an indefinite noun, or where specificity is required but unclear in the context. This tag must not be applied in cases where 'one' is used correctly as a substitution for a singular, definite noun that has already been identified in context.">
+      <Example>Incorrect: "I would like to have two oranges and one apples." (incorrect substitution of 'one' for plural 'apples')</Example>
+      <Example>Correct: "I would like to have two oranges and one apple."</Example>
+      <Example>Incorrect: "This is the car I wanted, but I prefer the one more." (should be 'the one more expensive')</Example>
+      <Example>Correct: "This is the car I wanted, but I prefer the one more expensive."</Example>
+    </SubType>
+
+    <SubType name="Proform so" description="If an error occurs involving the misuse or incorrect placement of the proform 'so' to refer to a consequence or summary, assign this tag; otherwise, leave it untagged. The proform 'so' is typically used to link a result or conclusion from a previously stated idea. Errors occur when 'so' is used without a clear causal link or when it is misused to represent non-causal relationships between ideas. Ensure 'so' is only used to indicate causality or conclusion. Avoid tagging as an error if 'so' is used in a non-causal context but still serves a logical function, such as indicating emphasis or continuation.">
+      <Example>Incorrect: "I studied for the test, so I went to the gym." (incorrect use of 'so' to indicate no clear causal relationship)</Example>
+      <Example>Correct: "I studied for the test, so I was confident during the exam."</Example>
+      <Example>Incorrect: "He didn't go to the meeting, so he had a lot of work to do." (lack of logical cause-effect with 'so')</Example>
+      <Example>Correct: "He didn't go to the meeting, so he had to catch up on the work."</Example>
+    </SubType>
+  </MainType>
+</ErrorTypes>
+
+
+Prompt:
+    As an expert in English and Computer Science, interpret the provided XML FRAMEWORK or criteria and analyze the structured user input given as JSON. The JSON will contain a key-value pair with "line_number" as a line number, and "sentence" as the corresponding English input text. The text within the JSON is interconnected.
+    Using the classification tags from the provided FRAMEWORK, apply all relevant tags to the JSON. You must accurately tag the sentences, identifying and assigning appropriate SubTypes for the MainType. Additionally, for every tag you apply, provide a detailed justification, explaining why each specific tag was chosen.
+
+    Required actions :
+    Tagging: "Using the provided criteria file or FRAMEWORK, begin by understanding the MainType outlined. Then, review the description of MainType and its associated SubTypes. Based on these descriptions, assign the appropriate MainType and SubType to each sentence. Some sentences may require multiple SubType tags, so ensure that all relevant tags are applied accurately. Stick strictly to the given FRAMEWORK and focus exclusively on identifying and tagging major errors. Do not offer any suggestions or corrections, just focus solely on tagging major errors."
+
+    Rules for analysis: 
+    "If a sentence does not fit any of the MainType and SubType, or if it contains errors that are not addressed by the established criteria—such as minor errors that do not significantly disrupt the overall meaning or the minor errors that only effect the clarity or conciseness of the sentence then you must write only "NONE" for both MainType and SubType. The aim is to ensure that only relevant major errors are identified and tagged for analysis."
+
+    Justification: "Provide a detailed justification for each tag, explaining why a specific SubType has been applied. Clarify the reasons for tagging each sentence according to the provided criteria, ensuring that the rationale for selecting the particular SubType must be clear and logical. Justification must be according to the provided SubTypeTag and provide correction of SubTypeTag error as well in justification. Also output Correction of errors as 'Correction:'. If their is "NONE" in both MainType and SubType then you must write only "NONE" in Justification."
+
+    Required output :
+    The output must be structure as following CSV. Each opening CSV tag should close with proper closing tag.
+
+csv
+	LineNumber,InputText,MainTypeTag,SubTypeTags,Justification
+	1,"Some text.","Type","Tags","Justification"
+csv

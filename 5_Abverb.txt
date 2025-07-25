@@ -1,0 +1,49 @@
+FRAMEWORK/CRITERIA:
+[FRAMEWORK]
+<ErrorTypes>
+  <MainType name="Adverb Errors" description="If an error involves the inappropriate choice, form, or placement of an adverb within a sentence, affecting its meaning or clarity, assign this tag; otherwise, leave it untagged.">
+    <SubType name="General Adverb" description="If a general adverb that typically expresses manner, degree, frequency, or time (e.g., 'quickly', 'slowly', 'often', 'sometimes', 'very', 'extremely', 'yesterday', 'today') is used incorrectly in terms of placement or form, impacting clarity or grammatical correctness, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "He ran quick to the store." (Incorrect form: 'quick' should be 'quickly')</Example>
+      <Example>Correct: "He ran quickly to the store."</Example>
+    <SubType>
+    <SubType name="Connective Adverb" description="If a connective adverb (e.g., 'therefore', 'however', 'moreover', 'thus', 'consequently', 'furthermore') is used inappropriately, disrupting the logical flow or coherence between sentences or clauses, assign this tag. Errors include using a connective adverb that fails to accurately reflect the intended logical relationship, such as using 'moreover' to introduce a contradiction instead of addition, leading to confusion or misunderstanding in the text's progression. This subtype focuses solely on the logical misuse of connective adverbs without considering punctuation errors. Assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "He was tired, moreover, he went for a run." (Misuse of 'moreover' where 'nevertheless' is needed to indicate contrast.)</Example>
+      <Example>Correct: "He was tired; nevertheless, he went for a run." (Correct use of 'nevertheless' to properly indicate contrast.)</Example>
+    </SubType>
+</SubType>
+
+    <SubType name="Negative Adverb" description="If a negative adverb (e.g., 'not', 'never', 'nowhere', 'hardly', 'scarcely', 'barely') contributes to double negation or misnegation within a sentence, causing confusion or unintended meanings, assign this tag; otherwise, leave it untagged.">
+      <Example>Incorrect: "I can't hardly believe it." (Double negation: 'can't' with 'hardly' implies a positive statement)</Example>
+      <Example>Correct: "I can hardly believe it."</Example>
+    </SubType>
+    <SubType name="Phrasal Adverb" description="If an adverb that forms part of a phrasal verb (e.g., 'up' in 'give up', 'out' in 'find out', 'over' in 'do over', 'away' in 'throw away') is incorrectly separated from the verb, altering the meaning of the phrasal verb, assign this tag; otherwise, leave it untagged. Errors in this category typically involve incorrect word order or separation by other words.">
+      <Example>Incorrect: "She ended it up." (Incorrect order: 'up' should not be separated from 'end')</Example>
+      <Example>Correct: "She ended up it."</Example>
+    </SubType>
+    <SubType name="Wh-Adverb" description="If a Wh-adverb (e.g., 'why', 'where', 'when', 'how', 'whenever', 'wherever', 'however') used in interrogative or relative clauses is misapplied, resulting in unclear or incorrect question formation or clause integration, assign this tag; otherwise, leave it untagged. Errors might include using a Wh-adverb where none is required or vice versa.">
+      <Example>Incorrect: "I do not know how does he do that." (Incorrect clause structure: 'how' should not be followed by 'does')</Example>
+      <Example>Correct: "I do not know how he does that."</Example>
+    </SubType>
+  </MainType>
+</ErrorTypes>
+
+
+Prompt:
+    As an expert in English and Computer Science, interpret the provided XML framework or criteria and analyze the structured user input given as JSON. The JSON will contain a key-value pair with "line_number" as a line number, and "sentence" as the corresponding English input text. The text within the JSON is interconnected.
+    Using the classification tags from the provided framework, apply all relevant tags to the JSON. You must accurately tag the sentences, identifying and assigning appropriate SubTypes for the MainType. Additionally, for every tag you apply, provide a detailed justification, explaining why each specific tag was chosen.
+
+    Required actions :
+    Tagging: "Using the provided criteria file or framework, begin by understanding the MainType outlined. Then, review the description of MainType and its associated SubTypes. Based on these descriptions, assign the appropriate MainType and SubType to each sentence. Some sentences may require multiple SubType tags, so ensure that all relevant tags are applied accurately. Stick strictly to the given FRAMEWORK and focus exclusively on identifying and tagging major errors. Do not offer any suggestions or corrections, just focus solely on tagging major errors."
+
+    Rules for analysis: 
+    "If a sentence does not fit any of the MainType and SubType, or if it contains errors that are not addressed by the established criteria—such as minor errors that do not significantly disrupt the overall meaning or the minor errors that only effect the clarity or conciseness of the sentence then you must write only "NONE" for both MainType and SubType. The aim is to ensure that only relevant major errors are identified and tagged for analysis."
+
+    Justification: "Provide a detailed justification for each tag, explaining why a specific SubType has been applied. Clarify the reasons for tagging each sentence according to the provided criteria, ensuring that the rationale for selecting the particular SubType must be clear and logical. Justification must be according to the provided SubTypeTag and provide correction of SubTypeTag error as well in justification. Also output Correction of errors as 'Correction:'. If their is "NONE" in both MainType and SubType then you must write only "NONE" in Justification."
+
+    Required output :
+    The output must be structure as following CSV. Each opening CSV tag should close with proper closing tag.
+
+csv
+	LineNumber,InputText,MainTypeTag,SubTypeTags,Justification
+	1,"Some text.","Type","Tags","Justification"
+csv
